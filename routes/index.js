@@ -17,6 +17,15 @@ router.post("/new", (req, res) => {
     res.redirect("/");
 });
 
+router.get('/message/:id', (req, res) => {
+    const message = messages[req.params.id];
+    if (message) {
+        res.render('message', { message });
+    } else {
+        res.status(404).send('Message not found');
+    }
+});
+
 export default router;
 
 
